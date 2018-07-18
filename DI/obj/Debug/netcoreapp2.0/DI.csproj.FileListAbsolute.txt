@@ -1,0 +1,9 @@
+C:\Users\kmidori\Desktop\git\Albelli\DI\bin\Debug\netcoreapp2.0\DI.deps.json
+C:\Users\kmidori\Desktop\git\Albelli\DI\bin\Debug\netcoreapp2.0\DI.dll
+C:\Users\kmidori\Desktop\git\Albelli\DI\bin\Debug\netcoreapp2.0\DI.pdb
+C:\Users\kmidori\Desktop\git\Albelli\DI\obj\Debug\netcoreapp2.0\DI.csprojAssemblyReference.cache
+C:\Users\kmidori\Desktop\git\Albelli\DI\obj\Debug\netcoreapp2.0\DI.csproj.CoreCompileInputs.cache
+C:\Users\kmidori\Desktop\git\Albelli\DI\obj\Debug\netcoreapp2.0\DI.AssemblyInfoInputs.cache
+C:\Users\kmidori\Desktop\git\Albelli\DI\obj\Debug\netcoreapp2.0\DI.AssemblyInfo.cs
+C:\Users\kmidori\Desktop\git\Albelli\DI\obj\Debug\netcoreapp2.0\DI.dll
+C:\Users\kmidori\Desktop\git\Albelli\DI\obj\Debug\netcoreapp2.0\DI.pdb

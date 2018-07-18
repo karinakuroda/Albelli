@@ -1,0 +1,11 @@
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\API.deps.json
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\API.runtimeconfig.json
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\API.runtimeconfig.dev.json
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\API.dll
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\API.pdb
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.csprojAssemblyReference.cache
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.csproj.CoreCompileInputs.cache
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.AssemblyInfoInputs.cache
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.AssemblyInfo.cs
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.dll
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.pdb
