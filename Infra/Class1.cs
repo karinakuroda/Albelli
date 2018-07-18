@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DI
+namespace Infra
 {
     public class Class1
     {

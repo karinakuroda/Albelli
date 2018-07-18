@@ -9,3 +9,11 @@ C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.Assembl
 C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.AssemblyInfo.cs
 C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.dll
 C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.pdb
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\DI.dll
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\Domain.dll
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\Service.dll
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\DI.pdb
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\Domain.pdb
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\Service.pdb
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\obj\Debug\netcoreapp2.0\API.csproj.CopyComplete
+C:\Users\kmidori\Desktop\git\Albelli\Albelli\bin\Debug\netcoreapp2.0\appsettings.json
