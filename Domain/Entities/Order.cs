@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Domain.Entities
 {
-    public class Order
+    public class Order:Entity
     {
 		public virtual Guid Id { get; protected set; }
 		public virtual decimal Price { get; protected set; }
-		public virtual DateTime Created { get; protected set; }
+	
 
 		public virtual Customer Customer { get; protected set; }
 

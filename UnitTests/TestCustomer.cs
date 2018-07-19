@@ -25,7 +25,7 @@ namespace UnitTests
 		public void ShouldCallGetCustomerOnlyOnce()
         {
 			//Arrange
-			_mockCustomerRepository.Setup(s => s.Get(It.IsAny<Guid>())).Returns(GetCustomerMock());
+			_mockCustomerRepository.Setup(s => s.Get(It.IsAny<Guid>())).ReturnsAsync(GetCustomerMock());
 			//Act
 			var resp = _customerService.Get(It.IsAny<Guid>());
 			//Assert
@@ -35,11 +35,11 @@ namespace UnitTests
 		public void ShouldGetCustomer()
 		{
 			//Arrange
-			_mockCustomerRepository.Setup(s => s.Get(It.IsAny<Guid>())).Returns(GetCustomerMock());
+			_mockCustomerRepository.Setup(s => s.Get(It.IsAny<Guid>())).ReturnsAsync(GetCustomerMock());
 			//Act
 			var resp = _customerService.Get(It.IsAny<Guid>());
 			//Assert
-			resp.Email.Equals(GetCustomerMock().Email);
+			resp.Result.Email.Equals(GetCustomerMock().Email);
 		}
 		private static Customer GetCustomerMock()
 		{

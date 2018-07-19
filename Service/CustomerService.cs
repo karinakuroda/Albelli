@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Interfaces;
 
@@ -7,6 +8,7 @@ namespace Service
 	public class CustomerService : ICustomerService
 	{
 		private ICustomerRepository _customerRepository;
+		public string Message { get; private set; }
 
 		public CustomerService(ICustomerRepository customerRepository) {
 			_customerRepository = customerRepository;
@@ -15,22 +17,22 @@ namespace Service
 
 		public void Add(Customer customer)
 		{
-			throw new NotImplementedException();
+			 _customerRepository.Add(customer);
 		}
 
-		public Customer Get(Guid customerId)
+		public Task<Customer> Get(Guid customerId)
 		{
 			return _customerRepository.Get(customerId);
 		}
 
 		public void Remove(Guid customerId)
 		{
-			throw new NotImplementedException();
+			 _customerRepository.Remove(customerId);
 		}
 
 		public void Update(Customer customer)
 		{
-			throw new NotImplementedException();
+			_customerRepository.Update(customer);
 		}
 	}
 }

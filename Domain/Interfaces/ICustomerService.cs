@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Domain.Entities;
 
 namespace Domain.Interfaces
@@ -10,6 +11,8 @@ namespace Domain.Interfaces
 		void Add(Customer customer);
 		void Update(Customer customer);
 		void Remove(Guid customerId);
-		Customer Get(Guid customerId);
+		Task<Customer> Get(Guid customerId);
+
+		string Message { get; }
 	}
 }
