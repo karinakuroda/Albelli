@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Repository;
@@ -17,7 +18,10 @@ namespace Infra.Repository
 	 
 		public bool Add(Order order)
 		{
+
 			_context.Add(order);
+			_context.Entry<Customer>(order.Customer).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+
 			var result = _context.SaveChanges();
 			return result > 0;
 		}
