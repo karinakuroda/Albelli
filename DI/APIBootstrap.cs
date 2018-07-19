@@ -22,12 +22,14 @@ namespace DI
 
 
 			services.AddTransient<ICustomerService, CustomerService>();
+			services.AddTransient<IOrderService, OrderService>(); 
+
 			services.AddTransient<ICustomerRepository, CustomerRepository>();
+			services.AddTransient<IOrderRepository, OrderRepository>();
+			services.AddTransient<IProductRepository, ProductRepository>();
+
 			services.AddTransient<AlbelliContext, AlbelliContext>();
 
-			
-			//services.AddSingleton<ICustomerService, CustomerService>();
-			//services.AddSingleton<ICustomerService, CustomerService>();
 
 
 		}
