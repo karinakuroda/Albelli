@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Albelli
 {
@@ -29,6 +30,12 @@ namespace Albelli
 			APIBootstrap.ConfigureServices(ref services);
 			services.AddMvc();
 
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new Info { Title = "Albelli API", Version = "v1" });
+			});
+
+
 			var connection = @"Server=(localdb)\mssqllocaldb;Database=Albelli;Trusted_Connection=True;";
 			services.AddDbContext<AlbelliContext>(options => options.UseSqlServer(connection));
 		}
@@ -36,7 +43,14 @@ namespace Albelli
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
+			app.UseSwagger();
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Albelli API");
+				c.RoutePrefix = string.Empty;
+			});
+
+			if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
