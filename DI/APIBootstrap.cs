@@ -1,5 +1,7 @@
 ﻿using System;
 using Domain.Interfaces;
+using Domain.Interfaces.Repository;
+using Domain.Interfaces.Service;
 using Infra;
 using Infra.Repository;
 using Microsoft.Extensions.Configuration;

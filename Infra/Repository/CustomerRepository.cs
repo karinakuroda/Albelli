@@ -2,6 +2,7 @@
 using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces;
+using Domain.Interfaces.Repository;
 
 namespace Infra.Repository
 {

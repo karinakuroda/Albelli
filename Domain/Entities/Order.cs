@@ -14,21 +14,17 @@ namespace Domain.Entities
 
 		public virtual ICollection<Product> Products { get; protected set; }
 
-		public static Order Create(Customer customer, decimal price)
+		public static Order Create(Customer customer, decimal price, List<Product> products)
 		{
-			if (customer == null)
-				throw new Exception("Customer object can't be null");
+			var order = new Order();
 
-			if (price<=0)
-				throw new Exception("Price can't be empty");
+			if (customer == null) customer.AddValidation("Customer object can't be null");
+			if (price<=0) customer.AddValidation("Price can't be empty");
 
-		
-			Order order = new Order
-			{
-				Customer = customer,
-				Price = price,
-				Created = DateTime.Today
-			};
+			order.Customer = customer;
+			order.Price = price;
+			order.Products = products;
+			
 			
 			return order;
 		}

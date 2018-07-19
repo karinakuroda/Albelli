@@ -1,7 +1,7 @@
 ﻿using System;
 using Domain.Entities;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces.Repository
 {
 	public interface ICustomerRepository
     {

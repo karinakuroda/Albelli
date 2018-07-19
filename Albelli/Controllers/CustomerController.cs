@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using API.Mappings;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Albelli.Controllers
@@ -13,9 +16,12 @@ namespace Albelli.Controllers
     public class CustomerController : Controller
     {
 		private ICustomerService _customerService;
+		private IMapper _mapper;
 
-		public CustomerController(ICustomerService customerService) {
+		public CustomerController(ICustomerService customerService,
+								  IMapper mapper) {
 			_customerService = customerService;
+			_mapper = mapper; 
 		}
 		//// GET api/values
 		//[HttpGet]
@@ -39,8 +45,8 @@ namespace Albelli.Controllers
 			try
 			{
 				bool success = false;
-				var cust = Customer.Create(customer.FirstName, customer.LastName, customer.Email);
-				success= _customerService.Add(cust);
+				var model = _mapper.Map<API.Models.Customer, Customer>(customer);
+				success = _customerService.Add(model);
 				
 				if (success)
 					return Ok(_customerService.Message);
@@ -54,14 +60,13 @@ namespace Albelli.Controllers
 		}
 		// PUT api/values/5
 		[HttpPut]
-        public IActionResult Put( [FromBody]API.Models.Customer customer)
+        public IActionResult Put([FromBody]API.Models.Customer customer)
         {
-			
 			try
 			{
 				bool success = false;
-				var cust = Customer.Create(customer.Id, customer.FirstName, customer.LastName, customer.Email);
-				success= _customerService.Update(cust);
+				var model = _mapper.Map<API.Models.Customer, Customer>(customer);
+				success = _customerService.Update(model);
 
 				if (success)
 					return Ok(_customerService.Message);

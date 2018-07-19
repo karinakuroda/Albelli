@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces.Service
 {
 	public interface ICustomerService
 	{

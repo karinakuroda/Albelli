@@ -24,20 +24,19 @@ namespace Domain.Entities
 		}
 		private static Customer Create(Guid id, string name, string email)
 		{
-			if (string.IsNullOrEmpty(name))
-				throw new ArgumentNullException("name is empty");
+			var customer = new Customer();
+			if (string.IsNullOrEmpty(name)) customer.AddValidation("Name can't be empty");
 			
-			if (string.IsNullOrEmpty(email))
-				throw new ArgumentNullException("email is empty");
-			
-			Customer customer = new Customer()
-			{
-				Id = id,
-				Name=name,
-				Email = email
-			};
+			if (string.IsNullOrEmpty(email)) customer.AddValidation("Email can't be empty");
+
+			customer.Id = id;
+			customer.Name = name;
+			customer.Email = email;
  
 			return customer;
 		}
+		//private bool ValidateEmail() {
+
+		//}
 	}
 }

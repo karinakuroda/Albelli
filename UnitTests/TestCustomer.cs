@@ -1,6 +1,8 @@
 using System;
 using Domain.Entities;
 using Domain.Interfaces;
+using Domain.Interfaces.Repository;
+using Domain.Interfaces.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Service;
@@ -40,6 +42,16 @@ namespace UnitTests
 			var resp = _customerService.Get(It.IsAny<Guid>());
 			//Assert
 			resp.Email.Equals(GetCustomerMock().Email);
+		}
+		[TestMethod]
+		public void ShouldUpdateCustomer()
+		{
+			//Arrange
+			_mockCustomerRepository.Setup(s => s.Update(It.IsAny<Customer>())).Returns(true);
+			//Act
+			var resp = _customerService.Update(It.IsAny<Customer>());
+			//Assert
+			//resp.Email.Equals(GetCustomerMock().Email);
 		}
 		private static Customer GetCustomerMock()
 		{

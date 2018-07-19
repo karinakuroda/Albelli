@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Domain.Entities
@@ -33,6 +34,15 @@ namespace Domain.Entities
 			{
 				_updated = value;
 			}
+		}
+
+		[NotMapped]
+		public List<string> Validations { get; protected set; }
+		public void AddValidation(string validation) {
+			if (Validations==null)
+				Validations = new List<string>();
+			
+			this.Validations.Add(validation);
 		}
 	}
 }

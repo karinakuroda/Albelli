@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Mappings;
+using AutoMapper;
 using DI;
 using Infra;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +31,8 @@ namespace Albelli
         {
 			APIBootstrap.ConfigureServices(ref services);
 			services.AddMvc();
+			services.AddAutoMapper();
+			//AutoMapperConfig.RegisterMappings();
 
 			services.AddSwaggerGen(c =>
 			{

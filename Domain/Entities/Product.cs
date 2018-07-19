@@ -14,5 +14,22 @@ namespace Domain.Entities
 		public virtual string Code { get; protected set; }
 
 		public Order Order { get; protected set; }
+
+
+		private static Product Create(Guid id, int quantity, decimal cost, string code, Order order)
+		{
+			var product = new Product();
+			if (quantity<=0) product.AddValidation("Quantity can't be empty");
+			if (string.IsNullOrEmpty(code)) product.AddValidation("Code can't be empty");
+			if (cost<=0) product.AddValidation("Cost can't be empty");
+			if (order==null) product.AddValidation("Order can't be null");
+			
+			product.Id = id;
+			product.Quantity = quantity;
+			product.Cost = cost;
+			product.Code= code;
+
+			return product;
+		}
 	}
 }
