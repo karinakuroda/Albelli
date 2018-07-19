@@ -8,10 +8,10 @@ namespace Domain.Interfaces
 {
 	public interface ICustomerService
 	{
-		void Add(Customer customer);
-		void Update(Customer customer);
-		void Remove(Guid customerId);
-		Task<Customer> Get(Guid customerId);
+		bool Add(Customer customer);
+		bool Update(Customer customer);
+		bool Remove(Guid customerId);
+		Customer Get(Guid customerId);
 
 		string Message { get; }
 	}

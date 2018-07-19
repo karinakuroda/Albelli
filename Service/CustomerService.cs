@@ -15,24 +15,24 @@ namespace Service
 		}
 		
 
-		public void Add(Customer customer)
+		public bool Add(Customer customer)
 		{
-			 _customerRepository.Add(customer);
+			 return _customerRepository.Add(customer);
 		}
 
-		public Task<Customer> Get(Guid customerId)
+		public Customer Get(Guid customerId)
 		{
 			return _customerRepository.Get(customerId);
 		}
 
-		public void Remove(Guid customerId)
+		public bool Remove(Guid customerId)
 		{
-			 _customerRepository.Remove(customerId);
+			 return _customerRepository.Remove(customerId);
 		}
 
-		public void Update(Customer customer)
+		public bool Update(Customer customer)
 		{
-			_customerRepository.Update(customer);
+			return _customerRepository.Update(customer);
 		}
 	}
 }

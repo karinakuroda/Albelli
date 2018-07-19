@@ -29,7 +29,7 @@ namespace Albelli.Controllers
         public IActionResult Get(Guid id)
         {
 			var cust =  _customerService.Get(id);
-			return Ok(cust.Result);
+			return Ok(cust);
 		}
 
 
@@ -40,7 +40,7 @@ namespace Albelli.Controllers
 			{
 				bool success = false;
 				var cust = Customer.Create(customer.FirstName, customer.LastName, customer.Email);
-				_customerService.Add(cust);
+				success= _customerService.Add(cust);
 				
 				if (success)
 					return Ok(_customerService.Message);
@@ -61,7 +61,7 @@ namespace Albelli.Controllers
 			{
 				bool success = false;
 				var cust = Customer.Create(customer.Id, customer.FirstName, customer.LastName, customer.Email);
-				_customerService.Update(cust);
+				success= _customerService.Update(cust);
 
 				if (success)
 					return Ok(_customerService.Message);
@@ -77,9 +77,22 @@ namespace Albelli.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(Guid id)
+        public IActionResult Delete(Guid id)
         {
-			_customerService.Remove(id);
-        }
+			try
+			{
+				bool success = false;
+				success = _customerService.Remove(id);
+
+				if (success)
+					return Ok(_customerService.Message);
+				else
+					return StatusCode((int)HttpStatusCode.InternalServerError, new System.ApplicationException("Can't Delete Customer"));
+			}
+			catch (Exception ex)
+			{
+				return StatusCode((int)HttpStatusCode.InternalServerError, new System.ApplicationException(ex.ToString()));
+			}
+		}
     }
 }

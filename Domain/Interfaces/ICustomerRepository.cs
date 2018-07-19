@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Entities;
 
 namespace Domain.Interfaces
 {
-    public interface ICustomerRepository
+	public interface ICustomerRepository
     {
-		Task<Customer> Get(Guid customerId);
+		Customer Get(Guid customerId);
 		
-		void Add(Customer customer);
-		void Update(Customer customer);
-		void Remove(Guid customerId);
+		bool Add(Customer customer);
+		bool Update(Customer customer);
+		bool Remove(Guid customerId);
 	}
 }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces;
 
@@ -17,30 +14,31 @@ namespace Infra.Repository
 		}
 		 
 	 
-		public void Add(Customer customer)
+		public bool Add(Customer customer)
 		{
-			_context.Entry<Customer>(customer);
-			_context.SaveChanges();
+			_context.Add(customer);
+			var result = _context.SaveChanges();
+			return result > 0;
 		}
 
-		public Task<Customer> Get(Guid customerId)
+		public Customer Get(Guid customerId)
 		{
-			return  _context.Customers.SingleOrDefaultAsync(s => s.Id == customerId);
+			return  _context.Customers.FirstOrDefault(s => s.Id == customerId);
 		}
 
-		public void Remove(Guid customerId)
+		public bool Remove(Guid customerId)
 		{
 			var cust =  Get(customerId);
 			 _context.Remove(cust);
-			_context.SaveChanges();
+			return (_context.SaveChanges()>0);
 		}
 
-		public void Update(Customer customer)
+		public bool Update(Customer customer)
 		{
 			var old = Get(customer.Id);
-			if (old == null) return;
+			if (old == null) return false;
 			_context.Entry(old).CurrentValues.SetValues(customer);
-			_context.SaveChanges();
+			return (_context.SaveChanges() > 0);
 
 		}
 	}

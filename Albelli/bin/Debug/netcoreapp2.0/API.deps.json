@@ -4180,6 +4180,7 @@
       "DI/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
+          "Infra": "1.0.0",
           "Microsoft.AspNetCore": "2.1.2",
           "Service": "1.0.0"
         },

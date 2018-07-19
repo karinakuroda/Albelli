@@ -1,5 +1,7 @@
 ﻿using System;
 using Domain.Interfaces;
+using Infra;
+using Infra.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service;
@@ -17,7 +19,13 @@ namespace DI
 															  .Build();
 
 
-			services.AddSingleton<ICustomerService, CustomerService>();
+			services.AddTransient<ICustomerService, CustomerService>();
+			services.AddTransient<ICustomerRepository, CustomerRepository>();
+			services.AddTransient<AlbelliContext, AlbelliContext>();
+
+			
+			//services.AddSingleton<ICustomerService, CustomerService>();
+			//services.AddSingleton<ICustomerService, CustomerService>();
 
 
 		}
