@@ -44,7 +44,6 @@ namespace UnitTests
 		private static Customer GetCustomerMock()
 		{
 			return Customer.Create("Test", "Test@t.com");
-
 		}
 	}
 }

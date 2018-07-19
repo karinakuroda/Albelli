@@ -1,0 +1,6 @@
+C:\Users\kmidori\Desktop\git\Albelli\Database\bin\Debug\Database.dacpac
+C:\Users\kmidori\Desktop\git\Albelli\Database\bin\Debug\Database.dll
+C:\Users\kmidori\Desktop\git\Albelli\Database\bin\Debug\Database.pdb
+C:\Users\kmidori\Desktop\git\Albelli\Database\obj\Debug\Database.sqlprojAssemblyReference.cache
+C:\Users\kmidori\Desktop\git\Albelli\Database\obj\Debug\Database.dll
+C:\Users\kmidori\Desktop\git\Albelli\Database\obj\Debug\Database.pdb
