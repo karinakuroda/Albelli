@@ -18,6 +18,7 @@ namespace Infra.Repository
 		public bool Add(Product product)
 		{
 			_context.Add(product);
+			_context.Entry(product.Order).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 			var result = _context.SaveChanges();
 			return result > 0;
 		}
@@ -39,6 +40,7 @@ namespace Infra.Repository
 			var old = Get(product.Id);
 			if (old == null) return false;
 			_context.Entry(old).CurrentValues.SetValues(product);
+			_context.Entry(product.Order).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 			return (_context.SaveChanges() > 0);
 
 		}

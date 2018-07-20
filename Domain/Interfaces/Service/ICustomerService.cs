@@ -13,6 +13,6 @@ namespace Domain.Interfaces.Service
 		bool Remove(Guid customerId);
 		Customer Get(Guid customerId);
 
-		string Message { get; }
+		List<string> Message { get; }
 	}
 }

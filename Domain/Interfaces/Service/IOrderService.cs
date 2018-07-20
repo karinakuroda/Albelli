@@ -12,7 +12,8 @@ namespace Domain.Interfaces.Service
 		bool Update(Order order);
 		bool Remove(Guid orderId);
 		Order Get(Guid orderId);
+		
+		List<string> Message { get; }
 
-		string Message { get; }
 	}
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Repository;
@@ -45,21 +46,32 @@ namespace UnitTests
 			resp.Price.Equals(GetOrderMock().Price);
 		}
 		[TestMethod]
-		public void ShouldUpdateorder()
+		public void ShouldCallUpdateOrder()
 		{
 			//Arrange
 			_mockOrderRepository.Setup(s => s.Update(It.IsAny<Order>())).Returns(true);
 			//Act
-			var resp = _orderService.Update(It.IsAny<Order>());
+			var resp = _orderService.Update(GetOrderMock());
 			//Assert
-			//resp.Email.Equals(GetorderMock().Email);
+			_mockOrderRepository.Verify(o => o.Update(It.IsAny<Order>()), Times.Once());
+		}
+
+		[TestMethod]
+		public void ShouldSumOrderPrice()
+		{
+			//Arrange
+			_mockOrderRepository.Setup(s => s.Get(It.IsAny<Guid>())).Returns(GetOrderMock());
+			//Act
+			var resp = _orderService.Get(It.IsAny<Guid>());
+			//Assert
+			resp.Price.Equals(GetOrderMock().Products.Sum(p=>p.Quantity * p.Cost));
 		}
 		private static Order GetOrderMock()
 		{
 
 			var list = new List<Product>();
 			list.Add(Product.Create(1, 10, "1234"));
-			return Order.Create(Customer.Create("Test", "Test@t.com"), 10, list);
+			return Order.Create(Customer.Create("Test", "Test@t.com"), list);
 		}
 	}
 }

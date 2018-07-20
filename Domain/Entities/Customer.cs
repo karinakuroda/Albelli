@@ -8,7 +8,10 @@ namespace Domain.Entities
 		public virtual string Name { get; protected set; }
 		public virtual string Email { get; protected set; }
 
-
+		public static Customer Validate(Customer customer)
+		{
+			return Create(customer.Id, customer.Name, customer.Email);
+		}
 		public static Customer Create(string name, string email)
 		{
 			return Create(Guid.NewGuid(), name, email) ;

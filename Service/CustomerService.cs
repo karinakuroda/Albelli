@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Interfaces;
@@ -10,7 +11,7 @@ namespace Service
 	public class CustomerService : ICustomerService
 	{
 		private ICustomerRepository _customerRepository;
-		public string Message { get; private set; }
+		public List<string> Message { get; private set; }
 
 		public CustomerService(ICustomerRepository customerRepository) {
 			_customerRepository = customerRepository;
@@ -19,7 +20,14 @@ namespace Service
 
 		public bool Add(Customer customer)
 		{
-			 return _customerRepository.Add(customer);
+			var model = Customer.Validate(customer);
+			if (model.Validations==null ||  model.Validations.ToArray().Length == 0)
+				return _customerRepository.Add(customer);
+			else
+				this.Message = model.Validations;
+
+			return false;
+
 		}
 
 		public Customer Get(Guid customerId)

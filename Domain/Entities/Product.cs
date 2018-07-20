@@ -17,7 +17,7 @@ namespace Domain.Entities
 
 
 
-		private static Product Create(Guid id, int quantity, decimal cost, string code)
+		private static Product Create(Guid id, int quantity, decimal cost, string code, Order order=null)
 		{
 			var product = new Product();
 			if (quantity<=0) product.AddValidation("Quantity can't be empty");
@@ -29,13 +29,26 @@ namespace Domain.Entities
 			product.Quantity = quantity;
 			product.Cost = cost;
 			product.Code= code;
+			product.Order = order;
 
 			return product;
 		}
 
+		public static Product Create(int quantity, decimal cost, string code,Order order)
+		{
+			return Create(Guid.NewGuid(), quantity, cost, code, order);
+		}
 		public static Product Create(int quantity, decimal cost, string code)
 		{
 			return Create(Guid.NewGuid(), quantity, cost, code);
+		}
+		public void UpdateOrder(Order order) {
+			if (order.Id==Guid.Empty)
+			{
+				order.Validations.Add("order cannot be empty");
+				return;
+			}
+			this.Order = order;
 		}
 	}
 }

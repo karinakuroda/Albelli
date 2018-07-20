@@ -31,6 +31,9 @@ namespace Albelli
         {
 			APIBootstrap.ConfigureServices(ref services);
 			services.AddMvc();
+			 //.AddJsonOptions(options => {
+				//  options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+			 // });
 			services.AddAutoMapper();
 			//AutoMapperConfig.RegisterMappings();
 
