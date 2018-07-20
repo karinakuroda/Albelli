@@ -16,12 +16,14 @@ namespace UnitTests
     {
 		Mock<ICustomerRepository> _mockCustomerRepository;
 		ICustomerService _customerService;
+		Mock<IOrderRepository> _mockOrderRepository;
 
 		[TestInitialize]
 		public void Init()
 		{
 			_mockCustomerRepository = new Mock<ICustomerRepository>();
-			_customerService = new CustomerService(_mockCustomerRepository.Object);
+			_mockOrderRepository = new Mock<IOrderRepository>();
+			_customerService = new CustomerService(_mockCustomerRepository.Object, _mockOrderRepository.Object);
 		}
 
 		[TestMethod]
@@ -35,7 +37,7 @@ namespace UnitTests
 			_mockCustomerRepository.Verify(o => o.Get(It.IsAny<Guid>()), Times.Once());
 		}
 		[TestMethod]
-		public void ShouldCallGetAllCustomersReposiroty()
+		public void ShouldCallGetAllCustomersRepository()
 		{
 			//Arrange
 			_mockCustomerRepository.Setup(s => s.GetAll()).Returns(GetCustomerMockList());
@@ -53,6 +55,26 @@ namespace UnitTests
 			var resp = _customerService.Get(It.IsAny<Guid>());
 			//Assert
 			resp.Email.Equals(GetCustomerMock().Email);
+		}
+		[TestMethod]
+		public void ShouldCallGetByCustomer()
+		{
+			//Arrange
+			_mockOrderRepository.Setup(s => s.GetByCustomer(It.IsAny<Guid>())).Returns(new List<Order>());
+			//Act
+			var resp = _customerService.GetWithOrders(It.IsAny<Guid>());
+			//Assert
+			_mockOrderRepository.Verify(o => o.GetByCustomer(It.IsAny<Guid>()), Times.Once());
+		}
+		[TestMethod]
+		public void ShouldCallGetByCustomerRepository()
+		{
+			//Arrange
+			_mockCustomerRepository.Setup(s => s.Get(It.IsAny<Guid>())).Returns(GetCustomerMock());
+			//Act
+			var resp = _customerService.GetWithOrders(It.IsAny<Guid>());
+			//Assert
+			_mockCustomerRepository.Verify(o => o.Get(It.IsAny<Guid>()), Times.Once());
 		}
 		[TestMethod]
 		public void ShouldUpdateCustomer()

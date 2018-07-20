@@ -37,7 +37,16 @@ namespace Albelli.Controllers
 			var cust =  _customerService.Get(id);
 			return Ok(cust);
 		}
-		 
+
+		// GET api/values/5
+		[HttpGet]
+		[Route("GetWithOrders")]
+		public IActionResult GetWithOrders(Guid id)
+		{
+			var cust = _customerService.GetWithOrders(id);
+			return Ok(cust);
+		}
+
 
 		// GET api/values/5
 		[HttpGet]

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Domain.Entities;
@@ -41,6 +42,15 @@ namespace Infra.Repository
 				.FirstOrDefault(s => s.Id == orderId);
 			return order;
 			
+		}
+
+		public List<Order> GetByCustomer(Guid customerId)
+		{
+			var orders = _context.Orders
+				.Include(i => i.Products)
+				.Where(s => s.Customer.Id == customerId).ToList();
+			return orders;
+
 		}
 
 		public bool Remove(Guid orderId)
