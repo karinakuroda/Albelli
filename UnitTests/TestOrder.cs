@@ -36,7 +36,7 @@ namespace UnitTests
 			_mockOrderRepository.Verify(o => o.Get(It.IsAny<Guid>()), Times.Once());
 		}
 		[TestMethod]
-		public void ShouldGetorder()
+		public void ShouldGetOrder()
 		{
 			//Arrange
 			_mockOrderRepository.Setup(s => s.Get(It.IsAny<Guid>())).Returns(GetOrderMock());

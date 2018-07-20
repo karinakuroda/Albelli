@@ -12,6 +12,7 @@ namespace Domain.Interfaces.Service
 		bool Update(Customer customer);
 		bool Remove(Guid customerId);
 		Customer Get(Guid customerId);
+		List<Customer> GetAll();
 
 		List<string> Message { get; }
 	}

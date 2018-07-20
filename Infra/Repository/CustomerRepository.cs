@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces;
@@ -41,6 +42,11 @@ namespace Infra.Repository
 			_context.Entry(old).CurrentValues.SetValues(customer);
 			return (_context.SaveChanges() > 0);
 
+		}
+
+		public List<Customer> GetAll()
+		{
+			return _context.Customers.ToList();
 		}
 	}
 }

@@ -10,5 +10,7 @@ namespace Domain.Interfaces.Repository
 		bool Add(Order order);
 		bool Update(Order order);
 		bool Remove(Guid orderId);
+
+
 	}
 }

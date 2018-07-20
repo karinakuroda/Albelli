@@ -44,5 +44,10 @@ namespace Service
 		{
 			return _customerRepository.Update(customer);
 		}
+
+		public List<Customer> GetAll()
+		{
+			return _customerRepository.GetAll();
+		}
 	}
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Interfaces.Repository;
@@ -34,6 +35,16 @@ namespace UnitTests
 			_mockCustomerRepository.Verify(o => o.Get(It.IsAny<Guid>()), Times.Once());
 		}
 		[TestMethod]
+		public void ShouldCallGetAllCustomersReposiroty()
+		{
+			//Arrange
+			_mockCustomerRepository.Setup(s => s.GetAll()).Returns(GetCustomerMockList());
+			//Act
+			var resp = _customerService.GetAll();
+			//Assert
+			_mockCustomerRepository.Verify(o => o.Get(It.IsAny<Guid>()), Times.Once());
+		}
+		[TestMethod]
 		public void ShouldGetCustomer()
 		{
 			//Arrange
@@ -56,6 +67,12 @@ namespace UnitTests
 		private static Customer GetCustomerMock()
 		{
 			return Customer.Create("Test", "Test@t.com");
+		}
+		private static List<Customer> GetCustomerMockList()
+		{
+			var list = new List<Customer>();
+			list.Add(Customer.Create("Test", "Test@t.com"));
+			return list;
 		}
 	}
 }

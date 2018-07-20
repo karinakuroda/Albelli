@@ -37,7 +37,16 @@ namespace Albelli.Controllers
 			var cust =  _customerService.Get(id);
 			return Ok(cust);
 		}
+		 
 
+		// GET api/values/5
+		[HttpGet]
+		[Route("GetAll")]
+		public IActionResult GetAll()
+		{
+			var cust = _customerService.GetAll();
+			return Ok(cust);
+		}
 
 		[HttpPost]
 		public IActionResult Post([FromBody] API.Models.Customer customer)

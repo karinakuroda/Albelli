@@ -59,9 +59,9 @@ namespace Infra.Repository
 			foreach (var product in order.Products)
 			{
 				if (product.Id == Guid.Empty)
-					_context.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+					_context.Entry(product).State = EntityState.Added;
 				else
-					_context.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+					_context.Entry(product).State = EntityState.Modified;
 			}
 		
 			return (_context.SaveChanges() > 0);
