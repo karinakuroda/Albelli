@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Albelli
@@ -30,10 +31,11 @@ namespace Albelli
         public void ConfigureServices(IServiceCollection services)
         {
 			APIBootstrap.ConfigureServices(ref services);
-			services.AddMvc();
-			 //.AddJsonOptions(options => {
-				//  options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-			 // });
+			services.AddMvc()
+			 .AddJsonOptions(options =>
+			  {
+				  options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+			  });
 			services.AddAutoMapper();
 			//AutoMapperConfig.RegisterMappings();
 
