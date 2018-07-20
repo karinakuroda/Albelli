@@ -43,6 +43,8 @@ namespace Infra.Repository
 			var old = Get(order.Id);
 			if (old == null) return false;
 			_context.Entry(old).CurrentValues.SetValues(order);
+			_context.Entry<Customer>(order.Customer).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+			
 			return (_context.SaveChanges() > 0);
 
 		}

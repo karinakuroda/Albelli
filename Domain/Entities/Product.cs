@@ -16,13 +16,14 @@ namespace Domain.Entities
 		public Order Order { get; protected set; }
 
 
-		private static Product Create(Guid id, int quantity, decimal cost, string code, Order order)
+
+		private static Product Create(Guid id, int quantity, decimal cost, string code)
 		{
 			var product = new Product();
 			if (quantity<=0) product.AddValidation("Quantity can't be empty");
 			if (string.IsNullOrEmpty(code)) product.AddValidation("Code can't be empty");
 			if (cost<=0) product.AddValidation("Cost can't be empty");
-			if (order==null) product.AddValidation("Order can't be null");
+			//if (order==null) product.AddValidation("Order can't be null");
 			
 			product.Id = id;
 			product.Quantity = quantity;
@@ -30,6 +31,11 @@ namespace Domain.Entities
 			product.Code= code;
 
 			return product;
+		}
+
+		public static Product Create(int quantity, decimal cost, string code)
+		{
+			return Create(Guid.NewGuid(), quantity, cost, code);
 		}
 	}
 }
